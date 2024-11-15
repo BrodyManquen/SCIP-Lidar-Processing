@@ -1,11 +1,11 @@
 install.packages("easypackages")
 library(easypackages)
-# library packages. Easypackages should automatically install those that not installed on any device
-libraries("here", "sf", "dplyr", "NLP")
+# library packages. Easypackages will automatically install those that not installed on any device
+libraries("here", "sf", "dplyr", "NLP", "readr")
 
 # get local directory
 here()
-totalGPKG <- here("FeatureError\\data\\ErrorVectors.csv")
+totalGPKG <- here("data", "ErrorVectors.csv") ##insert your csv file here!
 total_features <- read_csv(totalGPKG)
 
 ## clean feature classes for analysis
@@ -50,3 +50,4 @@ acc_table
 ### skip the "Other" grouping above to get accuracy table with all feature types that compose Other
 acc_table_other <- acc_table%>%filter(!Type=="Wall" & !Type== "Structure"&!Type== "Terrace")
 acc_table_other
+
